@@ -6,8 +6,8 @@
 
 		<title>Dive in to ExtJs5</title>
 
-		<meta name="description" content="'Dive in to ExtJs5' presentation about new JavaScript framework Sencha ExtJs 5">
-		<meta name="author" content="Sergey Danilov (Pencroff)">
+		<meta name="description" content="'Dive in to ExtJs5' presentation about new version JavaScript framework Sencha ExtJs 5">
+		<meta name="author" content="Sergii Danilov (Pencroff)">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -104,6 +104,7 @@
                             <li>Singleton</li>
                         </ul>
                     </section>
+
                     <section id="class-based-inheritance">
                         <h3>Inheritance</h3>
                         </br>
@@ -203,6 +204,73 @@
                         </code></pre>
                     </section>
                 </section>
+
+                <section>
+                    <section id="application-architecture">
+                        <h2>Application architecture</h2>
+                        </br>
+                        <h3 class="fragment grow">MVC</h3>
+                        <p>or</p>
+                        <h3 class="fragment grow">MVVM</h3>
+                        </br>
+                        <p class="fragment">What is better?</p>
+                    </section>
+                    <section id="mvc">
+                        <h2>MVC</h2>
+                        </br>
+                        <ul>
+                            <li>M = model + storage</li>
+                            <li>V = viewport + UI components</li>
+                            <li>C = classic controller from ExtJs 4</li>
+                        </ul>
+                    </section>
+                    <section id="mvvm">
+                        <h2>MVVM + VC</h2>
+                        </br>
+                        <ul>
+                            <li>M = model + storage</li>
+                            <li>V = viewport + UI components</li>
+                            <p style="text-align: left;">&nbsp;+</p>
+                            <li>VM = view model</li>
+                            <li>VC = view controller</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section id="data-package">
+                    <h2>Data Package</h2>
+                    <ul>
+                        <li>Model</li>
+                        <li>Store</li>
+                    </ul>
+                    </br>
+                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="532" height="493" src="images/data-model.png" alt="Data model structure">
+                </section>
+
+                <section id="model">
+                    <h2>Model</h2>
+                    <ul>
+                        <li>Fields</li>
+                        <li>Proxies</li>
+                        <li>Validations</li>
+                        <li>Associations</li>
+                    </ul>
+                    </br>
+                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="532" height="454" src="images/model-breakdown.png" alt="Model in ExtJs">
+                </section>
+
+                <section id="store">
+                    <h2>Store</h2>
+                    </br>
+                    <ul>
+                        <li>Model</li>
+                        <li>Proxies</li>
+                        <li>Filter</li>
+                        <li>Grouper</li>
+                        <li>Sorter</li>
+                    </ul>
+                </section>
+
 
 				<section>
 					<h2>Heads Up</h2>
