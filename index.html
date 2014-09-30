@@ -82,6 +82,64 @@
                     </section>
                 </section>
 
+                <section id="out-of-the-box">
+                    <h2>Features out of the box</h2>
+                    </br>
+                    <p class="fragment">Class-based development</p>
+                    <p class="fragment">Application architecture (Backbone.js, AngularJS, Ember.js)</p>
+                    <p class="fragment">Data manipulation, like Underscore.js, but more</p>
+                    <p class="fragment">DOM queries (JQuery, Zepto.js)</p>
+                    <p class="fragment">UI elements (JQuery UI, Kendo UI)</p>
+                    <p class="fragment">Charts (Highcharts, Chart.js)</p>
+                    <p class="fragment">Loader (RequireJs, yepnope.js)</p>
+                </section>
+
+                <section>
+                    <section id="class-based-approach">
+                        <h2>Class-based approach</h2>
+                        </br>
+                        <ul>
+                            <li>Inheritance</li>
+                            <li>Overriding</li>
+                            <li>Mixins</li>
+                            <li>Statics</li>
+                            <li>Singleton</li>
+                        </ul>
+                    </section>
+                    <section id="class-based-inheritance">
+                        <h3>Inheritance</h3>
+                        </br>
+                        <pre><code>
+        Ext.define('App.common.proxy.AppRest', {
+            extend: 'Ext.data.proxy.Rest',
+            alternateClassName: 'Ext.data.AppRestProxy',
+            alias: 'proxy.apprest',
+            reader: {
+                type: 'json',
+                rootProperty: 'data',
+                totalProperty: 'total'
+            }
+        });
+                        </code></pre>
+                    </section>
+                    <section id="class-based-overriding">
+                        <h3>Overriding</h3>
+                        </br>
+                        <pre><code>
+        Ext.define('Jarvus.hotfixes.ext.form.field.Tag.FindRecord', {
+            override: 'Ext.form.field.Tag',
+            //    compatibility: '5.0.1255',
+
+            findRecord: function(field, value) {
+                return this.getStore().findRecord(field, value);
+            }
+        });
+                        </code></pre>
+                        </br>
+                    <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255">hotfixes</a></p>
+                    </section>
+                </section>
+
 				<section>
 					<h2>Heads Up</h2>
 					<p>
