@@ -59,7 +59,6 @@
                         <h2>What is Sencha ExtJS?</h2>
                         </br>
                         </br>
-                        </br>
                         <p class="fragment grow roll-in">Wikipedia:
                             <blockquote cite="http://en.wikipedia.org/wiki/Ext_JS" class="fragment roll-in">
                                 &laquo;Ext JS is a pure JavaScript application framework for building interactive web applications using techniques such as Ajax,
@@ -70,7 +69,6 @@
                     </section>
                     <section id="sencha-info">
                         <h2>What is Sencha ExtJS?</h2>
-                        </br>
                         </br>
                         </br>
                         <p class="fragment grow roll-in">Sencha:
@@ -122,6 +120,7 @@
         });
                         </code></pre>
                     </section>
+
                     <section id="class-based-overriding">
                         <h3>Overriding</h3>
                         </br>
@@ -137,6 +136,71 @@
                         </code></pre>
                         </br>
                     <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255">hotfixes</a></p>
+                    </section>
+
+                    <section id="class-based-mixins">
+                        <h3>Mixins</h3>
+                        </br>
+                        <h5>Declaration:</h5>
+                        <pre><code>
+        Ext.define('CanSing', {
+            sing: function() {
+                alert("For he's a jolly good fellow...")
+            }
+        });
+                        </code></pre>
+                        <h5>Using:</h5>
+                        <pre><code>
+        Ext.define('Musician', {
+            mixins: {
+                canSing: 'CanSing'
+            },
+
+            sing: function() {
+                // delegate singing operation to mixin
+                this.mixins.canSing.sing.call(this);
+            }
+        })
+                        </code></pre>
+                    </section>
+
+                    <section id="class-based-statics">
+                        <h3>Statics</h3>
+                        </br>
+                        <pre><code>
+        Ext.define('Computer', {
+            statics: {
+                factory: function(brand) {
+                    /* 'this' in static methods refer to the class itself */
+                    return new this(brand);
+                }
+            },
+            constructor: function(brand) {
+                this._brand = brand;
+            }
+        });
+
+        var dellComputer = Computer.factory('Dell');
+                        </code></pre>
+                    </section>
+
+                    <section id="class-based-singleton">
+                        <h3>Singleton</h3>
+                        </br>
+                        <pre><code>
+        Ext.define('Exceptions', {
+            singleton: true,
+            requires: ['Messages'],
+            onRequestException: function (conn, response, request, eOpts) {
+                'use strict';
+                var exceptionInfo = {
+                    Status: response.status + ' - ' + response.statusText,
+                    Description: response.responseText
+                };
+                Messages.showException(exceptionInfo);
+            }
+        });
+                        </code></pre>
                     </section>
                 </section>
 
