@@ -3,5 +3,5 @@ Dive to ExtJs 5
 
 Presentation about Sencha ExtJs 5
 
-Look presentation [there](https://github.com/Pencroff/DiveToExtJs5/tree/gh-pages)
+Look presentation [there](http://pencroff.github.io/DiveToExtJs5/)
 
