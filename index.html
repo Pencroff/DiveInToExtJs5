@@ -142,21 +142,19 @@
                     <section id="class-based-mixins">
                         <h3>Mixins</h3>
                         </br>
-                        <h5>Declaration:</h5>
                         <pre><code>
+        // Declaration
         Ext.define('CanSing', {
             sing: function() {
                 alert("For he's a jolly good fellow...")
             }
         });
-                        </code></pre>
-                        <h5>Using:</h5>
-                        <pre><code>
+
+        // Using
         Ext.define('Musician', {
             mixins: {
                 canSing: 'CanSing'
             },
-
             sing: function() {
                 // delegate singing operation to mixin
                 this.mixins.canSing.sing.call(this);
@@ -205,16 +203,96 @@
                     </section>
                 </section>
 
+                <section id="data-package">
+                    <h2>Data Package</h2>
+                    <ul>
+                        <li>Model</li>
+                        <li>Store</li>
+                    </ul>
+                    </br>
+                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="532" height="493" src="images/data-model.png" alt="Data model structure">
+                </section>
+
                 <section>
-                    <section id="application-architecture">
-                        <h2>Application architecture</h2>
+                    <section id="model">
+                        <h2>Model</h2>
+                        <ul>
+                            <li>Fields</li>
+                            <li>Proxies</li>
+                            <li>Validations</li>
+                            <li>Associations</li>
+                        </ul>
                         </br>
-                        <h3 class="fragment grow">MVC</h3>
-                        <p>or</p>
-                        <h3 class="fragment grow">MVVM</h3>
-                        </br>
-                        <p class="fragment">What is better?</p>
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="532" height="454" src="images/model-breakdown.png" alt="Model in ExtJs">
                     </section>
+                    <section id="model-example">
+                        <h2>Model example</h2>
+                        </br>
+                        <pre><code>
+        Ext.define('App.model.PostModel', {
+            extend: 'Ext.data.Model',
+            idProperty: '_id',
+            fields: [
+                {name: '_id', type: 'string'},
+                {name: 'title', type: 'string'},
+                {name: 'created', type: 'date'},
+                {name: 'published', type: 'boolean'},
+                {name: 'tags', type: 'auto'},
+                {name: 'locales', type: 'auto'} // complex type
+            ],
+            proxy: {
+                type: 'apprest',
+                url: '/api/posts'
+            }
+        });
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section id="store">
+                        <h2>Store</h2>
+                        </br>
+                        <ul>
+                            <li>Model</li>
+                            <li>Proxies</li>
+                            <li>Filter</li>
+                            <li>Grouper</li>
+                            <li>Sorter</li>
+                        </ul>
+                    </section>
+                    <section id="store-example">
+                        <h2>Store example</h2>
+                        </br>
+                        <pre><code>
+        Ext.define('App.model.PostStore', {
+            extend: 'Ext.data.Store',
+            model: 'TuiLead.model.PostModel',
+            storeId: 'PostStore',
+            autoLoad: true,
+            pageSize: 20,
+            proxy: {
+                type: 'apprest',
+                url: '/api/posts'
+            },
+            listeners: {
+                load: 'onStoreLoad'
+            }
+        });
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section id="application-architecture">
+                    <h2>Application architecture</h2>
+                    </br>
+                    <h3 class="fragment grow">MVC</h3>
+                    <p>or</p>
+                    <h3 class="fragment grow">MVVM</h3>
+                    </br>
+                    <p class="fragment">What is better?</p>
+                </section>
+
+                <section>
                     <section id="mvc">
                         <h2>MVC</h2>
                         </br>
@@ -224,6 +302,101 @@
                             <li>C = classic controller from ExtJs 4</li>
                         </ul>
                     </section>
+                    <section id="viewport">
+                        <h2>Viewport</h2>
+                        <pre><code>
+        Ext.define('App.view.Viewport', {
+            extend: 'Ext.container.Viewport',
+            renderTo: Ext.getBody(),
+            id: 'viewport',
+            layout: 'border',
+            requires: [
+                'App.view.MainView',
+                'App.view.general.Logo'
+            ],
+            initComponent: function () {
+                'use strict';
+                this.items = [ { xtype: 'mainLogo' },  { xtype: 'mainview' } ];
+                //this.callParent();
+                this.superclass.initComponent.apply(this, arguments);
+            }
+        });
+                        </code></pre>
+                    </section>
+                    <section id="declarative-ui">
+                        <h2>Declarative UI</h2>
+                        </br>
+                        <pre><code>
+    Ext.define('App.view.customers.List', {
+        extend: 'Ext.grid.Panel',
+        title: 'Customers',
+        store: 'Customers',
+        features: [{ ftype: 'grouping' }],
+        dockedItems: [{
+            xtype: 'pagingtoolbar',
+            store: 'Customers',   // same store GridPanel is using
+            dock: 'bottom',
+            width: 640,
+            displayInfo: true,
+            displayMsg: 'Displaying customers {0} - {1} of {2}',
+            emptyMsg: "No customers to display"
+        }],
+        initComponent: function () {
+            'use strict';
+            var me = this;
+            me.columns = {
+                items: [
+                    { header: 'Id', dataIndex: 'Id', width: 75 },
+                    { header: 'Name', flex: 1, xtype: 'templatecolumn', tpl: '{Name (Id)}'},
+                    { header: 'City', dataIndex: 'City', width: 150},
+                    { header: 'Cash', dataIndex: 'Cash', width: 200},
+                    { header: 'Registered', dataIndex: 'Registered', width: 80}
+                ]
+            };
+            me.superclass.initComponent.apply(me, arguments);
+        }
+    });
+                        </code></pre>
+                    </section>
+                    <section id="classic-controller">
+                        <h2>Controller</h2>
+                        <pre><code style="max-height: 520px;">
+    Ext.define('App.controller.Customers', {
+        extend: 'Ext.app.Controller',
+        alias: 'customerController',
+        stores: [ 'Customers' ],
+        models: [ 'Customer'  ],
+        views: [
+            'customers.Edit'
+        ],
+        init: function () {
+            'use strict';
+            var me = this;
+            this.control({
+                'customersList': { itemdblclick: me.editCustomer },
+                'customerEdit button[action=save]': { click: me.updateCustomer }
+            });
+        },
+        updateCustomer: function (btn) {
+            'use strict';
+            var container = btn.up('window'),
+                store = Ext.getStore('Customers');
+            store.sync();
+            container.close();
+        },
+        editCustomer: function (me, record, item, index, e, eOpts) {
+            'use strict';
+            if (record) {
+                var view = Ext.widget('customerEdit');
+                view.down('form').loadRecord(record);
+            }
+        }
+    });
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
                     <section id="mvvm">
                         <h2>MVVM + VC</h2>
                         </br>
@@ -235,40 +408,150 @@
                             <li>VC = view controller</li>
                         </ul>
                     </section>
+                    <section id="view-model">
+                        <h2>View model</h2>
+                        <pre><code style="max-height: 520px;">
+        Ext.define('App.area.blog.ctrl.TagViewModel', {
+            extend: 'Ext.app.ViewModel',
+            alias: 'viewmodel.blogtagviewmodel',
+            data: {
+            },
+            formulas: {
+                isIdReadOnly: function (get) {
+                    'use strict';
+                    var id = get('id');
+                    return !!id;
+                }
+            },
+            stores: {
+                tagstore: {
+                    extend: 'Ext.data.Store',
+                    model: 'App.model.TagModel',
+                    proxy: {
+                        type: 'apprest',
+                        url: '/api/tags'
+                    }
+                }
+            }
+        });
+                        </code></pre>
+                    </section>
+                    <section id="view-controller">
+                        <h2>View controller</h2>
+                        <pre><code style="max-height: 520px;">
+        Ext.define('App.area.blog.ctrl.TagCtrl', {
+            extend: 'Ext.app.ViewController',
+            alias: 'controller.blogtagctrl',
+            onAfterRenderItemView: function (control, eOpts) {
+                'use strict';
+                var me = this,
+                    view = me.getView(),
+                    vm = view.lookupViewModel(),
+                    id = vm.get('id'),
+                    value, fields, len, i, field;
+                if (id) {
+                    model.load(id, {
+                        scope: me,
+                        callback: function (record, operation, success) {
+                            if (success) {
+                                value = record.getValue();
+                                vm.set('record', value);
+                            }
+                        }
+                    });
+                } else {
+                    vm.set('record', {});
+                }
+                me.getDataForLocalesUiGeneration();
+            },
+            onAddItem: function (control, e, eOpts) {
+                'use strict';
+                var me = this,
+                url = 'tag/add';
+                me.redirectTo(url);
+            }
+        });
+                        </code></pre>
+                    </section>
+                    <section id="mvvm-view">
+                        <h2>View (MVVM)</h2>
+                        <pre><code>
+        Ext.define('App.area.blog.view.TagList', {
+            extend: 'Ext.grid.Panel',
+            alias: 'widget.BlogTagList',
+            requires: [
+                'App.area.blog.ctrl.TagCtrl',
+                'App.area.blog.ctrl.TagViewModel'
+            ],
+            controller: 'blogtagctrl',
+            viewModel: 'blogtagviewmodel',
+            title: 'Tags',
+            reference: 'tagsGrid',
+            selType: 'rowmodel',
+            bind: {
+                store: '{tagstore}'
+            },
+            minHeight: 250,
+            scroll: false,
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'top',
+                items: [
+                    { xtype: 'button', text: 'Add',
+                      listeners: { click: 'onAddItem' }
+                    },
+                    { xtype: 'tbfill' },
+                    { xtype: 'button', text: 'Delete',
+                      listeners: { click: 'onDeleteItem' },
+                      bind: { disabled : '{!tagsGrid.selection}' },
+                      disabled: true
+                    }
+                ]
+            }],
+            columns: {
+                items: [
+                {
+                    text: 'Tag',
+                    flex: 7,
+                    dataIndex: '_id'
+                }, {
+                    text: 'Count',
+                    flex: 1,
+                    dataIndex: 'cnt'
+                }]
+            },
+            bbar: {
+                xtype: 'pagingtoolbar',
+                bind: {
+                    store: '{tagstore}'
+                },
+                displayInfo: true,
+                displayMsg: 'Displaying tags {0} - {1} of {2}',
+                emptyMsg: "No tags to display"
+            }
+        });
+                        </code></pre>
+                    </section>
                 </section>
 
-                <section id="data-package">
-                    <h2>Data Package</h2>
-                    <ul>
-                        <li>Model</li>
-                        <li>Store</li>
-                    </ul>
-                    </br>
-                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="532" height="493" src="images/data-model.png" alt="Data model structure">
-                </section>
+                <section>
+                    <section id="ui-elements">
+                        <h2>UI elements</h2>
+                        </br>
+                        <ul>
+                            <li>View port & layouts</li>
+                            <li>Forms</li>
+                            <li>Grids</li>
+                            <li>Trees</li>
+                            <li>Charts</li>
+                        </ul>
+                    </section>
 
-                <section id="model">
-                    <h2>Model</h2>
-                    <ul>
-                        <li>Fields</li>
-                        <li>Proxies</li>
-                        <li>Validations</li>
-                        <li>Associations</li>
-                    </ul>
-                    </br>
-                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="532" height="454" src="images/model-breakdown.png" alt="Model in ExtJs">
-                </section>
-
-                <section id="store">
-                    <h2>Store</h2>
-                    </br>
-                    <ul>
-                        <li>Model</li>
-                        <li>Proxies</li>
-                        <li>Filter</li>
-                        <li>Grouper</li>
-                        <li>Sorter</li>
-                    </ul>
+                    <section id="layouts">
+                        <h2>Layouts</h2>
+                        </br>
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="561" height="481" src="images/layouts-extjs5.png" alt="Layouts in ExtJs">
+                    </section>
                 </section>
 
 
