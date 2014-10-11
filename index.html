@@ -306,240 +306,23 @@
                     </ul>
                 </section>
 
-                <section>
-
-
-                    <!--<section id="viewport">-->
-                        <!--<h2>Viewport</h2>-->
-                        <!--<pre><code>-->
-        <!--Ext.define('App.view.Viewport', {-->
-            <!--extend: 'Ext.container.Viewport',-->
-            <!--renderTo: Ext.getBody(),-->
-            <!--id: 'viewport',-->
-            <!--layout: 'border',-->
-            <!--requires: [-->
-                <!--'App.view.MainView',-->
-                <!--'App.view.general.Logo'-->
-            <!--],-->
-            <!--initComponent: function () {-->
-                <!--'use strict';-->
-                <!--this.items = [ { xtype: 'mainLogo' },  { xtype: 'mainview' } ];-->
-                <!--//this.callParent();-->
-                <!--this.superclass.initComponent.apply(this, arguments);-->
-            <!--}-->
-        <!--});-->
-                        <!--</code></pre>-->
-                    <!--</section>-->
-                    <!--<section id="declarative-ui">-->
-                        <!--<h2>Declarative UI</h2>-->
-                        <!--</br>-->
-                        <!--<pre><code>-->
-    <!--Ext.define('App.view.customers.List', {-->
-        <!--extend: 'Ext.grid.Panel',-->
-        <!--title: 'Customers',-->
-        <!--store: 'Customers',-->
-        <!--features: [{ ftype: 'grouping' }],-->
-        <!--dockedItems: [{-->
-            <!--xtype: 'pagingtoolbar',-->
-            <!--store: 'Customers',   // same store GridPanel is using-->
-            <!--dock: 'bottom',-->
-            <!--width: 640,-->
-            <!--displayInfo: true,-->
-            <!--displayMsg: 'Displaying customers {0} - {1} of {2}',-->
-            <!--emptyMsg: "No customers to display"-->
-        <!--}],-->
-        <!--initComponent: function () {-->
-            <!--'use strict';-->
-            <!--var me = this;-->
-            <!--me.columns = {-->
-                <!--items: [-->
-                    <!--{ header: 'Id', dataIndex: 'Id', width: 75 },-->
-                    <!--{ header: 'Name', flex: 1, xtype: 'templatecolumn', tpl: '{Name (Id)}'},-->
-                    <!--{ header: 'City', dataIndex: 'City', width: 150},-->
-                    <!--{ header: 'Cash', dataIndex: 'Cash', width: 200},-->
-                    <!--{ header: 'Registered', dataIndex: 'Registered', width: 80}-->
-                <!--]-->
-            <!--};-->
-            <!--me.superclass.initComponent.apply(me, arguments);-->
-        <!--}-->
-    <!--});-->
-                        <!--</code></pre>-->
-                    <!--</section>-->
-                    <!--<section id="classic-controller">-->
-                        <!--<h2>Controller</h2>-->
-                        <!--<pre><code style="max-height: 520px;">-->
-    <!--Ext.define('App.controller.Customers', {-->
-        <!--extend: 'Ext.app.Controller',-->
-        <!--alias: 'customerController',-->
-        <!--stores: [ 'Customers' ],-->
-        <!--models: [ 'Customer'  ],-->
-        <!--views: [-->
-            <!--'customers.Edit'-->
-        <!--],-->
-        <!--init: function () {-->
-            <!--'use strict';-->
-            <!--var me = this;-->
-            <!--this.control({-->
-                <!--'customersList': { itemdblclick: me.editCustomer },-->
-                <!--'customerEdit button[action=save]': { click: me.updateCustomer }-->
-            <!--});-->
-        <!--},-->
-        <!--updateCustomer: function (btn) {-->
-            <!--'use strict';-->
-            <!--var container = btn.up('window'),-->
-                <!--store = Ext.getStore('Customers');-->
-            <!--store.sync();-->
-            <!--container.close();-->
-        <!--},-->
-        <!--editCustomer: function (me, record, item, index, e, eOpts) {-->
-            <!--'use strict';-->
-            <!--if (record) {-->
-                <!--var view = Ext.widget('customerEdit');-->
-                <!--view.down('form').loadRecord(record);-->
-            <!--}-->
-        <!--}-->
-    <!--});-->
-                        <!--</code></pre>-->
-                    <!--</section>-->
+                <section id="mvvm">
+                    <h2>MVVM</h2>
+                    </br>
+                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="791" height="431" src="images/MVVM.png" alt="MVVM in ExtJs">
+                    <ul>
+                        <li>M = model + storage</li>
+                        <li>V = viewport + UI components</li>
+                        <li>VM = view model</li>
+                    </ul>
                 </section>
 
-                <section>
-                    <section id="mvvm">
-                        <h2>MVVM + VC</h2>
-                        </br>
-                        <ul>
-                            <li>M = model + storage</li>
-                            <li>V = viewport + UI components</li>
-                            <p style="text-align: left;">&nbsp;+</p>
-                            <li>VM = view model</li>
-                            <li>VC = view controller</li>
-                        </ul>
-                    </section>
-                    <section id="view-model">
-                        <h2>View model</h2>
-                        <pre><code style="max-height: 520px;">
-        Ext.define('App.area.blog.ctrl.TagViewModel', {
-            extend: 'Ext.app.ViewModel',
-            alias: 'viewmodel.blogtagviewmodel',
-            data: {
-            },
-            formulas: {
-                isIdReadOnly: function (get) {
-                    'use strict';
-                    var id = get('id');
-                    return !!id;
-                }
-            },
-            stores: {
-                tagstore: {
-                    extend: 'Ext.data.Store',
-                    model: 'App.model.TagModel',
-                    proxy: {
-                        type: 'apprest',
-                        url: '/api/tags'
-                    }
-                }
-            }
-        });
-                        </code></pre>
-                    </section>
-                    <section id="view-controller">
-                        <h2>View controller</h2>
-                        <pre><code style="max-height: 520px;">
-        Ext.define('App.area.blog.ctrl.TagCtrl', {
-            extend: 'Ext.app.ViewController',
-            alias: 'controller.blogtagctrl',
-            onAfterRenderItemView: function (control, eOpts) {
-                'use strict';
-                var me = this,
-                    view = me.getView(),
-                    vm = view.lookupViewModel(),
-                    id = vm.get('id'),
-                    value, fields, len, i, field;
-                if (id) {
-                    model.load(id, {
-                        scope: me,
-                        callback: function (record, operation, success) {
-                            if (success) {
-                                value = record.getValue();
-                                vm.set('record', value);
-                            }
-                        }
-                    });
-                } else {
-                    vm.set('record', {});
-                }
-                me.getDataForLocalesUiGeneration();
-            },
-            onAddItem: function (control, e, eOpts) {
-                'use strict';
-                var me = this,
-                url = 'tag/add';
-                me.redirectTo(url);
-            }
-        });
-                        </code></pre>
-                    </section>
-                    <section id="mvvm-view">
-                        <h2>View (MVVM)</h2>
-                        <pre><code>
-        Ext.define('App.area.blog.view.TagList', {
-            extend: 'Ext.grid.Panel',
-            alias: 'widget.BlogTagList',
-            requires: [
-                'App.area.blog.ctrl.TagCtrl',
-                'App.area.blog.ctrl.TagViewModel'
-            ],
-            controller: 'blogtagctrl',
-            viewModel: 'blogtagviewmodel',
-            title: 'Tags',
-            reference: 'tagsGrid',
-            selType: 'rowmodel',
-            bind: {
-                store: '{tagstore}'
-            },
-            minHeight: 250,
-            scroll: false,
-            dockedItems: [{
-                xtype: 'toolbar',
-                dock: 'top',
-                items: [
-                    { xtype: 'button', text: 'Add',
-                      listeners: { click: 'onAddItem' }
-                    },
-                    { xtype: 'tbfill' },
-                    { xtype: 'button', text: 'Delete',
-                      listeners: { click: 'onDeleteItem' },
-                      bind: { disabled : '{!tagsGrid.selection}' },
-                      disabled: true
-                    }
-                ]
-            }],
-            columns: {
-                items: [
-                {
-                    text: 'Tag',
-                    flex: 7,
-                    dataIndex: '_id'
-                }, {
-                    text: 'Count',
-                    flex: 1,
-                    dataIndex: 'cnt'
-                }]
-            },
-            bbar: {
-                xtype: 'pagingtoolbar',
-                bind: {
-                    store: '{tagstore}'
-                },
-                displayInfo: true,
-                displayMsg: 'Displaying tags {0} - {1} of {2}',
-                emptyMsg: "No tags to display"
-            }
-        });
-                        </code></pre>
-                    </section>
+                <section id="mvvm-vc">
+                    <h2>MVVM + VC</h2>
+                    </br>
+                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="620" height="550" src="images/MVVM-VC.png" alt="MVVM + VC in ExtJs">
                 </section>
+
 
                 <section>
                     <section id="ui-elements">
@@ -557,7 +340,31 @@
                     <section id="layouts">
                         <h2>Layouts</h2>
                         </br>
-                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="561" height="481" src="images/layouts-extjs5.png" alt="Layouts in ExtJs">
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="561" height="481" src="images/layouts-extjs5.png" alt="Layouts in ExtJs 5">
+                    </section>
+
+                    <section id="forms">
+                        <h2>Forms</h2>
+                        </br>
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="700" height="482" src="images/form-fields.png" alt="Form fields in ExtJs 5">
+                    </section>
+
+                    <section id="grids">
+                        <h2>Grids</h2>
+                        </br>
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="838" height="486" src="images/grids.png" alt="Grids in ExtJs 5">
+                    </section>
+
+                    <section id="Trees">
+                        <h2>Trees</h2>
+                        </br>
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="560" height="490" src="images/trees.png" alt="Trees in ExtJs 5">
+                    </section>
+
+                    <section id="Charts">
+                        <h2>Charts</h2>
+                        </br>
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="562" height="475" src="images/charts.png" alt="Charts in ExtJs 5">
                     </section>
                 </section>
 
