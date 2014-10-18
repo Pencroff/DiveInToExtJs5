@@ -42,7 +42,7 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
+				<section data-slide="1">
 					<h1>Dive into ExtJs 5</h1>
                     </br>
 					<h4>Let's talk about new  version JavaScript framework <strong>Sencha ExtJs 5</strong></h4>
@@ -52,9 +52,12 @@
 					<p>
 						<small>Created by <a href="http://pencroff.com">Sergii Danilov</a> / <a href="http://twitter.com/pencroff">@pencroff</a></small>
 					</p>
+                    <aside class="notes">
+                        Hello, my name Sergii. I am web developer. Let's discus today about ExtJs 5.
+                    </aside>
 				</section>
 
-                <section id="what-is-extjs">
+                <section id="what-is-extjs" data-slide="2">
                     <h2>What is Sencha ExtJS?</h2>
                     </br>
                     </br>
@@ -72,11 +75,23 @@
                         </q>
                     </p>
                     <aside class="notes">
-                        Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+                        So. What is ExtJs? This is JavaScript framework that contain all features for client-side development out of the box.
+                        ExtJs used class-based development and as we can see it uses more than 300 classes and has more than 2 million developers.
                     </aside>
                 </section>
-
-                <section id="out-of-the-box">
+                <section id="popularity-extjs" data-slide="3">
+                    <h2>Popularity ExtJS</h2>
+                    </br>
+                    <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="811" height="495" src="images/extjs-trends.png" alt="ExtJs in Google trends">
+                    </br>
+                    <a href="https://www.google.ie/trends/explore#q=ExtJs%2C%20AngularJs%2C%20EmberJs%2C%20Backbone.js">Play on Google trends</a>
+                    <aside class="notes">
+                        What about popularity? As we can see first version was released in 2007 year and it was most popular JS framework,
+                        until developers got new modern frameworks like Angular, Ember and Backbone. I think ExtJs lose first position,
+                        because it is so big and oriented to enterprise applications. But it still has big community.
+                    </aside>
+                </section>
+                <section id="out-of-the-box" data-slide="4">
                     <h2>Features out of the box</h2>
                     </br>
                     <p class="fragment">Class-based development</p>
@@ -86,10 +101,18 @@
                     <p class="fragment">UI elements (JQuery UI, Kendo UI)</p>
                     <p class="fragment">Charts (Highcharts, Chart.js)</p>
                     <p class="fragment">Loader (RequireJs, yepnope.js)</p>
+                    <aside class="notes">
+                        ExtJs has a lot features out of the box than really help in development.
+                        As foundation for framework used Class-based approach.
+                        ExtJs helps organise application architecture like AngularJS, Ember.js, Backbone.js
+                        Also has wide opportunities for data manipulation and dom queries.
+                        HTML and CSS hidden from developers under UI elements and charts
+                        All this features load into browser by internal loader
+                    </aside>
                 </section>
 
                 <section>
-                    <section id="class-based-approach">
+                    <section id="class-based-approach" data-slide="5">
                         <h2>Class-based approach</h2>
                         </br>
                         <ul>
@@ -99,9 +122,12 @@
                             <li>Statics</li>
                             <li>Singleton</li>
                         </ul>
+                        <aside class="notes">
+                            Class-based approach allow extend the prototype nature JavaScript and use OOP inside JS environment.
+                        </aside>
                     </section>
 
-                    <section id="class-based-inheritance">
+                    <section id="class-based-inheritance" data-slide="6">
                         <h3>Inheritance</h3>
                         </br>
                         <pre><code>
@@ -118,7 +144,7 @@
                         </code></pre>
                     </section>
 
-                    <section id="class-based-overriding">
+                    <section id="class-based-overriding" data-slide="7">
                         <h3>Overriding</h3>
                         </br>
                         <pre><code>
@@ -135,7 +161,7 @@
                     <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255">hotfixes</a></p>
                     </section>
 
-                    <section id="class-based-mixins">
+                    <section id="class-based-mixins" data-slide="8">
                         <h3>Mixins</h3>
                         </br>
                         <pre><code>
@@ -159,7 +185,7 @@
                         </code></pre>
                     </section>
 
-                    <section id="class-based-statics">
+                    <section id="class-based-statics" data-slide="9">
                         <h3>Statics</h3>
                         </br>
                         <pre><code>
@@ -179,7 +205,7 @@
                         </code></pre>
                     </section>
 
-                    <section id="class-based-singleton">
+                    <section id="class-based-singleton" data-slide="10">
                         <h3>Singleton</h3>
                         </br>
                         <pre><code>
@@ -199,7 +225,7 @@
                     </section>
                 </section>
 
-                <section id="data-package">
+                <section id="data-package" data-slide="11">
                     <h2>Data Package</h2>
                     <ul>
                         <li>Model</li>
@@ -210,7 +236,7 @@
                 </section>
 
                 <section>
-                    <section id="model">
+                    <section id="model" data-slide="12">
                         <h2>Model</h2>
                         <ul>
                             <li>Fields</li>
@@ -221,7 +247,7 @@
                         </br>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="532" height="454" src="images/model-breakdown.png" alt="Model in ExtJs">
                     </section>
-                    <section id="model-example">
+                    <section id="model-example" data-slide="13">
                         <h2>Model example</h2>
                         </br>
                         <pre><code>
@@ -245,7 +271,7 @@
                     </section>
                 </section>
                 <section>
-                    <section id="store">
+                    <section id="store" data-slide="14">
                         <h2>Store</h2>
                         </br>
                         <ul>
@@ -256,7 +282,7 @@
                             <li>Sorter</li>
                         </ul>
                     </section>
-                    <section id="store-example">
+                    <section id="store-example" data-slide="15">
                         <h2>Store example</h2>
                         </br>
                         <pre><code>
@@ -279,7 +305,7 @@
                 </section>
 
                 <section>
-                    <section id="application-architecture">
+                    <section id="application-architecture" data-slide="16">
                         <h2>Application architecture</h2>
                         </br>
                         <h3 class="fragment grow">MVC</h3>
@@ -289,7 +315,7 @@
                         <p class="fragment">What is better?</p>
                     </section>
 
-                    <section id="mvc">
+                    <section id="mvc" data-slide="17">
                         <h2>MVC</h2>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="791" height="431" src="images/MVC.png" alt="MVC in ExtJs">
                         <ul>
@@ -299,7 +325,7 @@
                         </ul>
                     </section>
 
-                    <section id="mvvm">
+                    <section id="mvvm" data-slide="18">
                         <h2>MVVM</h2>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="791" height="431" src="images/MVVM.png" alt="MVVM in ExtJs">
                         <ul>
@@ -309,14 +335,14 @@
                         </ul>
                     </section>
 
-                    <section id="mvvm-vc">
+                    <section id="mvvm-vc" data-slide="19">
                         <h2>MVVM + VC</h2>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="620" height="550" src="images/MVVM-VC.png" alt="MVVM + VC in ExtJs">
                     </section>
                 </section>
 
                 <section>
-                    <section id="ui-elements">
+                    <section id="ui-elements" data-slide="20">
                         <h2>UI elements</h2>
                         </br>
                         <ul>
@@ -328,44 +354,49 @@
                         </ul>
                     </section>
 
-                    <section id="layouts">
+                    <section id="layouts" data-slide="21">
                         <h2>Layouts</h2>
                         </br>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="561" height="481" src="images/layouts-extjs5.png" alt="Layouts in ExtJs 5">
                     </section>
 
-                    <section id="forms">
+                    <section id="forms" data-slide="22">
                         <h2>Forms</h2>
                         </br>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="700" height="482" src="images/form-fields.png" alt="Form fields in ExtJs 5">
                     </section>
 
-                    <section id="grids">
+                    <section id="grids" data-slide="23">
                         <h2>Grids</h2>
                         </br>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="838" height="486" src="images/grids.png" alt="Grids in ExtJs 5">
                     </section>
 
-                    <section id="Trees">
+                    <section id="Trees" data-slide="24">
                         <h2>Trees</h2>
                         </br>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="560" height="490" src="images/trees.png" alt="Trees in ExtJs 5">
                     </section>
 
-                    <section id="Charts">
+                    <section id="Charts" data-slide="25">
                         <h2>Charts</h2>
                         </br>
                         <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="562" height="475" src="images/charts.png" alt="Charts in ExtJs 5">
                     </section>
+                    <section id="browser-support" data-slide="26">
+                        <h2>Browser support</h2>
+                        </br>
+                        <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="900" height="530" src="images/browser-support.png" alt="Charts in ExtJs 5">
+                    </section>
                 </section>
 
-                <section id="sencha-cmd">
+                <section id="sencha-cmd" data-slide="27">
                     <h2>Sencha CMD</h2>
                     </br>
                     <img style="border: 0px solid #000; box-shadow: 0 0 0;" width="837" height="474" src="images/sencha-cmd.png" alt="Charts in ExtJs 5">
                 </section>
 
-                <section id="extra-features">
+                <section id="extra-features" data-slide="28">
                     <h2>Extra features</h2>
                     </br>
                     <ul>
@@ -376,25 +407,27 @@
                     </ul>
                 </section>
 
-                <section id="pros-and-cons">
+                <section id="pros-and-cons" data-slide="29">
                     <h2>Pros and Cons</h2>
                     </br>
                     <h3 class="fragment">+</h3>
                     <ul>
                         <li>All in one and available out of the box</li>
-                        <li>High development speed</li>
+                        <li>High speed development</li>
                         <li>Cross-browser compatibility</li>
                         <li>The extensibility of components</li>
                         <li>JS optimization for deployment</li>
+                        <li>Theming</li>
                     </ul>
                     <h3 class="fragment">-</h3>
                     <ul>
-                        <li>It is not free</li>
-                        <li>Hardly theme changes</li>
+                        <li>It is not free ($3,225.00 for 5 licences)</li>
+                        <li>Enterprise orientation</li>
+                        <li>Large size of js files (565 kb minified and zipped)</li>
                     </ul>
                 </section>
 
-                <section id="questions">
+                <section id="questions" data-slide="30">
                     <h2>Do you have any questions?</h2>
                     </br>
                     </br>
@@ -410,6 +443,8 @@
                     </br>
                     <p>
                         <small><a href="http://pencroff.com">Sergii Danilov</a> / <a href="http://twitter.com/pencroff">@pencroff</a></small>
+                        </br>
+                        <small><a href="https://github.com/Pencroff"><img style="border: 0px solid #000; box-shadow: 0 0 0;" src="images/github-sociocon.png" height="48" width="48"> github.com/Pencroff</a><small>
                     </p>
                 </section>
 
