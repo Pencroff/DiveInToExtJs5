@@ -79,6 +79,7 @@
                         ExtJs used class-based development and as we can see it uses more than 300 classes and has more than 2 million developers.
                     </aside>
                 </section>
+
                 <section id="popularity-extjs" data-slide="3">
                     <h2>Popularity ExtJS</h2>
                     </br>
@@ -91,6 +92,7 @@
                         because it is so big and oriented to enterprise applications. But it still has big community.
                     </aside>
                 </section>
+
                 <section id="out-of-the-box" data-slide="4">
                     <h2>Features out of the box</h2>
                     </br>
@@ -142,6 +144,9 @@
             }
         });
                         </code></pre>
+                        <aside class="notes">
+                            It's really easy to build a branched hierarchy of classes.
+                        </aside>
                     </section>
 
                     <section id="class-based-overriding" data-slide="7">
@@ -158,7 +163,10 @@
         });
                         </code></pre>
                         </br>
-                    <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255">hotfixes</a></p>
+                        <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255">hotfixes</a></p>
+                        <aside class="notes">
+                            Very good opportunity update hardcoded value inside application. A few days ago I have updated hardcoded time format inside third part component.
+                        </aside>
                     </section>
 
                     <section id="class-based-mixins" data-slide="8">
@@ -183,6 +191,9 @@
             }
         })
                         </code></pre>
+                        <aside class="notes">
+                            If you need to blend some duplicate logic that not depended from data, you can use mixins mechanism.
+                        </aside>
                     </section>
 
                     <section id="class-based-statics" data-slide="9">
@@ -203,6 +214,9 @@
 
         var dellComputer = Computer.factory('Dell');
                         </code></pre>
+                        <aside class="notes">
+                            Static section gives us opportunity put methods to some type, not to instance.
+                        </aside>
                     </section>
 
                     <section id="class-based-singleton" data-slide="10">
@@ -222,6 +236,9 @@
             }
         });
                         </code></pre>
+                        <aside class="notes">
+                            Also in ExtJs5 very easy to declare singleton behavior.
+                        </aside>
                     </section>
                 </section>
 
@@ -233,11 +250,16 @@
                     </ul>
                     </br>
                     <img class="imgnoborder" width="532" height="493" src="images/data-model.png" alt="Data model structure">
+                    <aside class="notes">
+                        So, we have finished with basics of ExtJs 5 and let's go to Data Package.
+                        As you remember it is first letter in MVC and MVVM patterns.
+                    </aside>
                 </section>
 
                 <section>
                     <section id="model" data-slide="12">
                         <h2>Model</h2>
+                        </br>
                         <ul>
                             <li>Fields</li>
                             <li>Proxies</li>
@@ -247,6 +269,7 @@
                         </br>
                         <img class="imgnoborder" width="532" height="454" src="images/model-breakdown.png" alt="Model in ExtJs">
                     </section>
+
                     <section id="model-example" data-slide="13">
                         <h2>Model example</h2>
                         </br>
@@ -255,12 +278,12 @@
             extend: 'Ext.data.Model',
             idProperty: '_id',
             fields: [
-                {name: '_id', type: 'string'},
-                {name: 'title', type: 'string'},
-                {name: 'created', type: 'date'},
-                {name: 'published', type: 'boolean'},
-                {name: 'tags', type: 'auto'},
-                {name: 'locales', type: 'auto'} // complex type
+                { name: '_id', type: 'string' },
+                { name: 'title', type: 'string' },
+                { name: 'created', type: 'date' },
+                { name: 'published', type: 'boolean' },
+                { name: 'tags', type: 'auto' },
+                { name: 'locales', type: 'auto' } // complex type
             ],
             proxy: {
                 type: 'apprest',
@@ -269,9 +292,95 @@
         });
                         </code></pre>
                     </section>
+
+                    <section id="custom-type" data-slide="14">
+                        <h2>Custom type</h2>
+                        </br>
+                        <pre><code>
+        Ext.define('App.fields.Gender', {
+            extend: 'Ext.data.field.String',
+            alias: 'data.field.gender',
+            validators: {
+                type: 'inclusion',
+                list: [ 'female', 'male' ]
+            }
+        });
+                        </code></pre>
+                        <aside class="notes">
+                            ExtJs 5 also support data type. And you could easy extend exist types in your application.
+                        </aside>
+                    </section>
+
+                    <section id="validations" data-slide="15">
+                        <h2>Validations</h2>
+                        </br>
+                        <pre><code>
+        Ext.define('App.model.User', {
+            extend: 'Ext.data.Model',
+            fields: [
+                { name: 'id', type: 'int' },
+                { name: 'name', type: 'string' },
+                { name: 'gender', type: 'gender' }
+            ],
+            validators: {
+                // Validator type could be:
+                // Presence, Length, Format, Inclusion, Exclusion
+                name: [
+                    'presence',
+                    { type: 'length', min: 7 },
+                    { type: 'exclusion', list: ['Bender'] }
+                ]
+            }
+        });
+                        </code></pre>
+                    </section>
+
+                    <section id="using-validation" data-slide="16">
+                        <h2>Object validation</h2>
+                        </br>
+                        <pre><code>
+        var newUser = new App.model.User({
+            id: 10,
+            name: 'Bender',
+            gender: 'robot'
+        });
+        // run some validation on the new user we just created
+        console.log('Is User valid?', newUser.isValid());
+                        </code></pre>
+                    </section>
+
+                    <section id="associations" data-slide="17">
+                        <h2>Associations</h2>
+                        </br>
+                        <ul>
+                            <li>One to One</li>
+                            <li>One to Manny</li>
+                            <li>Many to Manny</li>
+                        </ul>
+                    </section>
+
+                    <section id="association-example" data-slide="18">
+                        <h2>Association example</h2>
+                        </br>
+                        <pre><code>
+        Ext.define('App.model.Person', {
+            extend: 'App.model.Base',
+            fields: [ 'name' ],
+            hasMany: 'Order' // the "entityName" for "App.model.Order" (see below)
+        });
+
+        Ext.define('App.model.Order', {
+            extend: 'App.model.Base',
+            fields: [ 'name' ],
+            hasMany: 'OrderItem'
+        });
+                        </code></pre>
+                        </br>
+                        <p><a href="https://fiddle.sencha.com/#fiddle/c8o" >Sand box</a></p>
+                    </section>
                 </section>
                 <section>
-                    <section id="store" data-slide="14">
+                    <section id="store" data-slide="19">
                         <h2>Store</h2>
                         </br>
                         <ul>
@@ -282,7 +391,8 @@
                             <li>Sorter</li>
                         </ul>
                     </section>
-                    <section id="store-example" data-slide="15">
+
+                    <section id="store-example" data-slide="20">
                         <h2>Store example</h2>
                         </br>
                         <pre><code>
@@ -305,7 +415,7 @@
                 </section>
 
                 <section>
-                    <section id="application-architecture" data-slide="16">
+                    <section id="application-architecture" data-slide="21">
                         <h2>Application architecture</h2>
                         </br>
                         <h3 class="fragment grow">MVC</h3>
@@ -315,7 +425,7 @@
                         <p class="fragment">What is better?</p>
                     </section>
 
-                    <section id="mvc" data-slide="17">
+                    <section id="mvc" data-slide="22">
                         <h2>MVC</h2>
                         <img class="imgnoborder" width="791" height="431" src="images/MVC.png" alt="MVC in ExtJs">
                         <ul>
@@ -325,7 +435,7 @@
                         </ul>
                     </section>
 
-                    <section id="mvvm" data-slide="18">
+                    <section id="mvvm" data-slide="23">
                         <h2>MVVM</h2>
                         <img class="imgnoborder" width="791" height="431" src="images/MVVM.png" alt="MVVM in ExtJs">
                         <ul>
@@ -335,14 +445,14 @@
                         </ul>
                     </section>
 
-                    <section id="mvvm-vc" data-slide="19">
+                    <section id="mvvm-vc" data-slide="24">
                         <h2>MVVM + VC</h2>
                         <img class="imgnoborder" width="620" height="550" src="images/MVVM-VC.png" alt="MVVM + VC in ExtJs">
                     </section>
                 </section>
 
                 <section>
-                    <section id="ui-elements" data-slide="20">
+                    <section id="ui-elements" data-slide="25">
                         <h2>UI elements</h2>
                         </br>
                         <ul>
@@ -354,49 +464,50 @@
                         </ul>
                     </section>
 
-                    <section id="layouts" data-slide="21">
+                    <section id="layouts" data-slide="26">
                         <h2>Layouts</h2>
                         </br>
                         <img class="imgnoborder" width="561" height="481" src="images/layouts-extjs5.png" alt="Layouts in ExtJs 5">
                     </section>
 
-                    <section id="forms" data-slide="22">
+                    <section id="forms" data-slide="27">
                         <h2>Forms</h2>
                         </br>
                         <img class="imgnoborder" width="700" height="482" src="images/form-fields.png" alt="Form fields in ExtJs 5">
                     </section>
 
-                    <section id="grids" data-slide="23">
+                    <section id="grids" data-slide="28">
                         <h2>Grids</h2>
                         </br>
                         <img class="imgnoborder" width="838" height="486" src="images/grids.png" alt="Grids in ExtJs 5">
                     </section>
 
-                    <section id="Trees" data-slide="24">
+                    <section id="trees" data-slide="29">
                         <h2>Trees</h2>
                         </br>
                         <img class="imgnoborder" width="560" height="490" src="images/trees.png" alt="Trees in ExtJs 5">
                     </section>
 
-                    <section id="Charts" data-slide="25">
+                    <section id="charts" data-slide="30">
                         <h2>Charts</h2>
                         </br>
                         <img class="imgnoborder" width="562" height="475" src="images/charts.png" alt="Charts in ExtJs 5">
                     </section>
-                    <section id="browser-support" data-slide="26">
+
+                    <section id="browser-support" data-slide="31">
                         <h2>Browser support</h2>
                         </br>
                         <img class="imgnoborder" width="900" height="530" src="images/browser-support.png" alt="Charts in ExtJs 5">
                     </section>
                 </section>
 
-                <section id="sencha-cmd" data-slide="27">
+                <section id="sencha-cmd" data-slide="32">
                     <h2>Sencha CMD</h2>
                     </br>
                     <img class="imgnoborder" width="837" height="474" src="images/sencha-cmd.png" alt="Charts in ExtJs 5">
                 </section>
 
-                <section id="extra-features" data-slide="28">
+                <section id="extra-features" data-slide="33">
                     <h2>Extra features</h2>
                     </br>
                     <ul>
@@ -407,7 +518,7 @@
                     </ul>
                 </section>
 
-                <section id="pros-and-cons" data-slide="29">
+                <section id="pros-and-cons" data-slide="34">
                     <h2>Pros and Cons</h2>
                     <h3 class="fragment">+</h3>
                     <ul>
@@ -428,7 +539,7 @@
                     </ul>
                 </section>
 
-                <section id="questions" data-slide="30">
+                <section id="questions" data-slide="35">
                     <h2>Do you have any questions?</h2>
                     </br>
                     </br>
@@ -438,6 +549,7 @@
                         <li><a href="http://docs.sencha.com/extjs/5.0/">docs.sencha.com/extjs/5.0</a></li>
                         <li><a href="http://docs.sencha.com/extjs/5.0/application_architecture/application_architecture.html">Introduction to Application Architecture</a></li>
                         <li><a href="http://www.sencha.com/blog/ext-js-5-mvc-mvvm-and-more/">Ext JS 5: MVC, MVVM and More</a></li>
+                        <li><a href="http://www.sencha.com/blog/deep-dive-into-ext-js-5-data">Deep Dive Into Ext JS 5 Data</a></li>
                         <li><a href="http://dev.sencha.com/ext/5.0.1/examples/index.html">Examples</a></li>
                     </ul>
                     </br>
