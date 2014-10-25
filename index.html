@@ -89,7 +89,7 @@
                     <aside class="notes">
                         What about popularity? As we can see first version was released in 2007 year and it was most popular JS framework,
                         until developers got new modern frameworks like Angular, Ember and Backbone. I think ExtJs lose first position,
-                        because it is so big and oriented to enterprise applications. But it still has big community.
+                        because it is so big and oriented to enterprise applications. But it is still has big community.
                     </aside>
                 </section>
 
@@ -122,6 +122,7 @@
                             <li>Overriding</li>
                             <li>Mixins</li>
                             <li>Statics</li>
+                            </br>
                             <li>Singleton</li>
                         </ul>
                         <aside class="notes">
@@ -145,7 +146,7 @@
         });
                         </code></pre>
                         <aside class="notes">
-                            It's really easy to build a branched hierarchy of classes.
+                            Look at Inheritance example. It's really easy to build a branched hierarchy of classes.
                         </aside>
                     </section>
 
@@ -165,7 +166,7 @@
                         </br>
                         <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255">hotfixes</a></p>
                         <aside class="notes">
-                            Very good opportunity update hardcoded value inside application. A few days ago I have updated hardcoded time format inside third part component.
+                            Overriding give us very good opportunity update hardcoded value inside application. A few days ago I have updated hardcoded time format inside third party component.
                         </aside>
                     </section>
 
@@ -252,7 +253,7 @@
                     <img class="imgnoborder" width="532" height="493" src="images/data-model.png" alt="Data model structure">
                     <aside class="notes">
                         So, we have finished with basics of ExtJs 5 and let's go to Data Package.
-                        As you remember it is first letter in MVC and MVVM patterns.
+                        Data Package consists of two entities Model and Storage.
                     </aside>
                 </section>
 
@@ -265,9 +266,13 @@
                             <li>Proxies</li>
                             <li>Validations</li>
                             <li>Associations</li>
+                            <li>Sessions</li>
                         </ul>
                         </br>
                         <img class="imgnoborder" width="532" height="454" src="images/model-breakdown.png" alt="Model in ExtJs">
+                        <aside class="notes">
+                            In the Model we can easy declare fields, proxies, validators, associations and sessions.
+                        </aside>
                     </section>
 
                     <section id="model-example" data-slide="13">
@@ -291,6 +296,9 @@
             }
         });
                         </code></pre>
+                        <aside class="notes">
+                            Look at example of model. It extended from base Model type and has fields array and proxy for using some kind of native storage (Server side, Local storage and etc.).
+                        </aside>
                     </section>
 
                     <section id="custom-type" data-slide="14">
@@ -307,7 +315,7 @@
         });
                         </code></pre>
                         <aside class="notes">
-                            ExtJs 5 also support data type. And you could easy extend exist types in your application.
+                            Model support Boolean, Date, Integer, Number and String field types, but you can declare custom type too.
                         </aside>
                     </section>
 
@@ -324,7 +332,7 @@
             ],
             validators: {
                 // Validator type could be:
-                // Presence, Length, Format, Inclusion, Exclusion
+                // Presence, Length, Range, Format, Inclusion, Exclusion, Email and Custom
                 name: [
                     'presence',
                     { type: 'length', min: 7 },
@@ -333,6 +341,9 @@
             }
         });
                         </code></pre>
+                        <aside class="notes">
+                            Model has a few predefined types of validators list of which can be extended by custom validators.
+                        </aside>
                     </section>
 
                     <section id="using-validation" data-slide="16">
@@ -347,6 +358,9 @@
         // run some validation on the new user we just created
         console.log('Is User valid?', newUser.isValid());
                         </code></pre>
+                        <aside class="notes">
+                            Look at example of model validation. This model not valid because name can't be Bender and gender can't be robot.
+                        </aside>
                     </section>
 
                     <section id="associations" data-slide="17">
@@ -357,6 +371,9 @@
                             <li>One to Manny</li>
                             <li>Many to Manny</li>
                         </ul>
+                        <aside class="notes">
+                            Models support three kinds of associations: one to one, one to many and many to many.
+                        </aside>
                     </section>
 
                     <section id="association-example" data-slide="18">
@@ -377,6 +394,9 @@
                         </code></pre>
                         </br>
                         <p><a href="https://fiddle.sencha.com/#fiddle/c8o" >Sandbox</a></p>
+                        <aside class="notes">
+                            There is association example. Let's play with it in the sandbox.
+                        </aside>
                     </section>
                 </section>
                 <section>
@@ -390,6 +410,10 @@
                             <li>Grouper</li>
                             <li>Sorter</li>
                         </ul>
+                        <aside class="notes">
+                            Usually in the application we have single models as well as collections of models. Or Storages in ExtJs terminology.
+                            Storage support proxies, filters, groupers and sorters.
+                        </aside>
                     </section>
 
                     <section id="store-example" data-slide="20">
@@ -411,6 +435,9 @@
             }
         });
                         </code></pre>
+                        <aside class="notes">
+                            Look at example of storage. As you can see it has model and some options. It supports data pagination out of the box.
+                        </aside>
                     </section>
                 </section>
 
@@ -423,6 +450,9 @@
                         <h3 class="fragment grow">MVVM</h3>
                         </br>
                         <p class="fragment">What is better?</p>
+                        <aside class="notes">
+                            Next part of ExtJs is application architecture entities. In 4th version was added support MVC and in 5th version MVVM. What is better?
+                        </aside>
                     </section>
 
                     <section id="mvc" data-slide="22">
@@ -433,6 +463,9 @@
                             <li>V = viewport + UI components</li>
                             <li>C = classic controller from ExtJs 4</li>
                         </ul>
+                        <aside class="notes">
+                            It is good classic pattern, but in real applications we have some overhead in coding logic connected to view. I mean read/write operations.
+                        </aside>
                     </section>
 
                     <section id="mvvm" data-slide="23">
@@ -443,16 +476,20 @@
                             <li>V = viewport + UI components</li>
                             <li>VM = view model</li>
                         </ul>
+                        <aside class="notes">
+                            MVVM pattern devoid of this shortcoming, but viewmodel usually overloaded by application logic.
+                        </aside>
                     </section>
 
                     <section id="mvvm-vc" data-slide="24">
                         <h2>MVVM + VC</h2>
                         <img class="imgnoborder" width="620" height="550" src="images/MVVM-VC.png" alt="MVVM + VC in ExtJs">
+                        <aside class="notes">
+                            ExtJs implemented variation of MVVM with view controller, that contains internal app logic.
+                            View Controller and Controller looks very similar, but ViewController are created for every view and
+                            traditional Controller can listen across few views.
+                        </aside>
                     </section>
-                    <aside class="notes">
-                        View Controller and Controller looks very similar, but ViewController are created for every view and
-                        traditional Controller can listen across few views.
-                    </aside>
                 </section>
 
                 <section>
@@ -466,42 +503,63 @@
                             <li>Trees</li>
                             <li>Charts</li>
                         </ul>
+                        <aside class="notes">
+                            ExtJs 5 contains big library of ui components for fast development business applications.
+                        </aside>
                     </section>
 
                     <section id="layouts" data-slide="26">
                         <h2>Layouts</h2>
                         </br>
                         <img class="imgnoborder" width="561" height="481" src="images/layouts-extjs5.png" alt="Layouts in ExtJs 5">
+                        <aside class="notes">
+                            Layouts give us easily manipulate ui elements position.
+                        </aside>
                     </section>
 
                     <section id="forms" data-slide="27">
                         <h2>Forms</h2>
                         </br>
                         <img class="imgnoborder" width="700" height="482" src="images/form-fields.png" alt="Form fields in ExtJs 5">
+                        <aside class="notes">
+                            Also we have a lot of components for creating forms.
+                        </aside>
                     </section>
 
                     <section id="grids" data-slide="28">
                         <h2>Grids</h2>
                         </br>
                         <img class="imgnoborder" width="838" height="486" src="images/grids.png" alt="Grids in ExtJs 5">
+                        <aside class="notes">
+                            and grids
+                        </aside>
                     </section>
 
                     <section id="trees" data-slide="29">
                         <h2>Trees</h2>
                         </br>
                         <img class="imgnoborder" width="560" height="490" src="images/trees.png" alt="Trees in ExtJs 5">
+                        <aside class="notes">
+                            or trees.
+                        </aside>
                     </section>
 
                     <section id="charts" data-slide="30">
                         <h2>Charts</h2>
                         </br>
                         <img class="imgnoborder" width="562" height="475" src="images/charts.png" alt="Charts in ExtJs 5">
+                        <aside class="notes">
+                            Charts optimised for touch devices.
+                        </aside>
                     </section>
 
                     <section id="browser-support" data-slide="31">
                         <h2>Browser support</h2>
                         </br>
                         <img class="imgnoborder" width="900" height="530" src="images/browser-support.png" alt="Charts in ExtJs 5">
+                        <aside class="notes">
+                            All ui components support a lot of different browsers.
+                        </aside>
                     </section>
                 </section>
 
@@ -509,26 +567,19 @@
                     <h2>Sencha CMD</h2>
                     </br>
                     <img class="imgnoborder" width="837" height="474" src="images/sencha-cmd.png" alt="Charts in ExtJs 5">
+                    <aside class="notes">
+                        Sencha Cmd has a lot of features. From scaffolding a new project, to minifying and deploying your application to production, Sencha Cmd provides a full set of lifecycle management features to compliment your Sencha projects.
+                    </aside>
                 </section>
 
-                <section id="extra-features" data-slide="33">
-                    <h2>Extra features</h2>
-                    </br>
-                    <ul>
-                        <li>Localization</li>
-                        <li>Memory Management</li>
-                        <li>Support RTL (Right to Left)</li>
-                        <li>Tablets and Touch-Screens</li>
-                    </ul>
-                </section>
-
-                <section id="pros-and-cons" data-slide="34">
+                <section id="pros-and-cons" data-slide="33">
                     <h2>Pros and Cons</h2>
                     <h3 class="fragment">+</h3>
                     <ul>
                         <li>All in one and available out of the box</li>
                         <li>High speed development</li>
                         <li>Cross-browser compatibility</li>
+                        <li>Support tablets and touch-screens</li>
                         <li>The extensibility of components</li>
                         <li>JS optimization for deployment</li>
                         <li>Theming</li>
@@ -543,7 +594,7 @@
                     </ul>
                 </section>
 
-                <section id="questions" data-slide="35">
+                <section id="questions" data-slide="34">
                     <h2>Do you have any questions?</h2>
                     </br>
                     </br>
