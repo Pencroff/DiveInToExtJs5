@@ -50,10 +50,10 @@
                     </br>
                     </br>
 					<p>
-						<small>Created by <a href="http://pencroff.com">Sergii Danilov</a> / <a href="http://twitter.com/pencroff">@pencroff</a></small>
+						<small>Created by <a href="http://pencroff.com" target="_blank">Sergii Danilov</a> / <a href="http://twitter.com/pencroff" target="_blank">@pencroff</a></small>
 					</p>
                     <aside class="notes">
-                        Hello, my name Sergii. I am web developer. Let's discus today about ExtJs 5.
+                        Hello, my name is Sergii. I am a web developer. Let's discus today about ExtJs 5.
                     </aside>
 				</section>
 
@@ -75,8 +75,8 @@
                         </q>
                     </p>
                     <aside class="notes">
-                        So. What is ExtJs? This is JavaScript framework that contain all features for client-side development out of the box.
-                        ExtJs used class-based development and as we can see it uses more than 300 classes and has more than 2 million developers.
+                        So. What is ExtJs? This is JavaScript framework that contains all features for client-side development out of the box.
+                        ExtJs uses class-based development and as we can see it uses more than 300 classes and has big community with more than 2 million developers.
                     </aside>
                 </section>
 
@@ -85,11 +85,11 @@
                     </br>
                     <img class="imgnoborder" width="811" height="495" src="images/extjs-trends.png" alt="ExtJs in Google trends">
                     </br>
-                    <a href="https://www.google.ie/trends/explore#q=ExtJs%2C%20AngularJs%2C%20EmberJs%2C%20Backbone.js">Play on Google trends</a>
+                    <a href="https://www.google.ie/trends/explore#q=ExtJs%2C%20AngularJs%2C%20EmberJs%2C%20Backbone.js" target="_blank">Play on Google trends</a>
                     <aside class="notes">
-                        What about popularity? As we can see first version was released in 2007 year and it was most popular JS framework,
-                        until developers got new modern frameworks like Angular, Ember and Backbone. I think ExtJs lose first position,
-                        because it is so big and oriented to enterprise applications. But it is still has big community.
+                        What about popularity? As we can see first version was released in 2007 year and it was the most popular JS framework,
+                        until developers got new modern frameworks like Angular, Ember and Backbone. I think ExtJs lost first position, because
+                        it is so big and oriented to enterprise applications. But it is still has a big community.
                     </aside>
                 </section>
 
@@ -104,12 +104,10 @@
                     <p class="fragment">Charts (Highcharts, Chart.js)</p>
                     <p class="fragment">Loader (RequireJs, yepnope.js)</p>
                     <aside class="notes">
-                        ExtJs has a lot features out of the box than really help in development.
-                        As foundation for framework used Class-based approach.
-                        ExtJs helps organise application architecture like AngularJS, Ember.js, Backbone.js
-                        Also has wide opportunities for data manipulation and dom queries.
-                        HTML and CSS hidden from developers under UI elements and charts
-                        All this features load into browser by internal loader
+                        ExtJs has a lot of features out of the box that really help in development. As foundation in framework
+                        uses Class-based approach. ExtJs helps organise application architecture like AngularJS, Ember.js,
+                        Backbone.js. Also it has wide opportunities for data manipulation and dom queries. HTML and CSS are hidden
+                        from developers under UI elements and charts. All this features load into browser by internal loader.
                     </aside>
                 </section>
 
@@ -164,7 +162,7 @@
         });
                         </code></pre>
                         </br>
-                        <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255">hotfixes</a></p>
+                        <p>New version still has bugs and this feature use for <a href="https://github.com/JarvusInnovations/sencha-hotfixes/tree/master/jarvus-hotfixes-ext-5.0.1.1255" target="_blank">hotfixes</a></p>
                         <aside class="notes">
                             Overriding give us very good opportunity update hardcoded value inside application. A few days ago I have updated hardcoded time format inside third party component.
                         </aside>
@@ -193,7 +191,7 @@
         })
                         </code></pre>
                         <aside class="notes">
-                            If you need to blend some duplicate logic that not depended from data, you can use mixins mechanism.
+                            If you need to blend some duplicate logic that is not depended from data, you can use mixins mechanism.
                         </aside>
                     </section>
 
@@ -216,7 +214,7 @@
         var dellComputer = Computer.factory('Dell');
                         </code></pre>
                         <aside class="notes">
-                            Static section gives us opportunity put methods to some type, not to instance.
+                            Static section gives us an opportunity to put methods to some type, not to instance.
                         </aside>
                     </section>
 
@@ -238,7 +236,7 @@
         });
                         </code></pre>
                         <aside class="notes">
-                            Also in ExtJs5 very easy to declare singleton behavior.
+                            Also in ExtJs5 it is very easy to declare singleton behavior.
                         </aside>
                     </section>
                 </section>
@@ -253,7 +251,7 @@
                     <img class="imgnoborder" width="532" height="493" src="images/data-model.png" alt="Data model structure">
                     <aside class="notes">
                         So, we have finished with basics of ExtJs 5 and let's go to Data Package.
-                        Data Package consists of two entities Model and Storage.
+                        Data Package consists of two entities : Model and Storage.
                     </aside>
                 </section>
 
@@ -271,7 +269,8 @@
                         </br>
                         <img class="imgnoborder" width="532" height="454" src="images/model-breakdown.png" alt="Model in ExtJs">
                         <aside class="notes">
-                            In the Model we can easy declare fields, proxies, validators, associations and sessions.
+                            In the Model we can easily declare fields, proxies, validators and associations.
+                            Also model supports sessions on the client side.
                         </aside>
                     </section>
 
@@ -297,7 +296,7 @@
         });
                         </code></pre>
                         <aside class="notes">
-                            Look at example of model. It extended from base Model type and has fields array and proxy for using some kind of native storage (Server side, Local storage and etc.).
+                            Look at example of the model. It extended from base Model type and has fields array and proxy for using some kind of native storage (Server side, Local storage and etc.).
                         </aside>
                     </section>
 
@@ -315,7 +314,7 @@
         });
                         </code></pre>
                         <aside class="notes">
-                            Model support Boolean, Date, Integer, Number and String field types, but you can declare custom type too.
+                            Model supports Boolean, Date, Integer, Number and String field types, but you can declare a custom type.
                         </aside>
                     </section>
 
@@ -331,8 +330,8 @@
                 { name: 'gender', type: 'gender' }
             ],
             validators: {
-                // Validator type could be:
-                // Presence, Length, Range, Format, Inclusion, Exclusion, Email and Custom
+                // Validator type could be: Presence, Length, Range,
+                // Format, Inclusion, Exclusion, Email and Custom
                 name: [
                     'presence',
                     { type: 'length', min: 7 },
@@ -342,7 +341,7 @@
         });
                         </code></pre>
                         <aside class="notes">
-                            Model has a few predefined types of validators list of which can be extended by custom validators.
+                            Model has a few predefined types of validators list which could be extended by custom validators.
                         </aside>
                     </section>
 
@@ -355,11 +354,13 @@
             name: 'Bender',
             gender: 'robot'
         });
+
         // run some validation on the new user we just created
+
         console.log('Is User valid?', newUser.isValid());
                         </code></pre>
                         <aside class="notes">
-                            Look at example of model validation. This model not valid because name can't be Bender and gender can't be robot.
+                            Look at the example of model validation. This model is not valid because name can't be Bender and gender can't be robot.
                         </aside>
                     </section>
 
@@ -393,9 +394,9 @@
         });
                         </code></pre>
                         </br>
-                        <p><a href="https://fiddle.sencha.com/#fiddle/c8o" >Sandbox</a></p>
+                        <a href="https://fiddle.sencha.com/#fiddle/c8o" target="_blank">Sandbox</a>
                         <aside class="notes">
-                            There is association example. Let's play with it in the sandbox.
+                            There is ‘one to many’ association example. Let's play with it in the sandbox.
                         </aside>
                     </section>
                 </section>
@@ -411,8 +412,8 @@
                             <li>Sorter</li>
                         </ul>
                         <aside class="notes">
-                            Usually in the application we have single models as well as collections of models. Or Storages in ExtJs terminology.
-                            Storage support proxies, filters, groupers and sorters.
+                            Usually in the application we have single models as well as collections of models.
+                            Or Storages in ExtJs terminology. Storage supports proxies, filters, groupers and sorters.
                         </aside>
                     </section>
 
@@ -436,7 +437,7 @@
         });
                         </code></pre>
                         <aside class="notes">
-                            Look at example of storage. As you can see it has model and some options. It supports data pagination out of the box.
+                            Look at example of storage. As you can see it has a model and some options. It supports data pagination out of the box.
                         </aside>
                     </section>
                 </section>
@@ -451,7 +452,7 @@
                         </br>
                         <p class="fragment">What is better?</p>
                         <aside class="notes">
-                            Next part of ExtJs is application architecture entities. In 4th version was added support MVC and in 5th version MVVM. What is better?
+                            Next part of ExtJs is application architecture entities. In 4th version support MVC was added and in 5th version they added MVVM. What is better?
                         </aside>
                     </section>
 
@@ -464,7 +465,7 @@
                             <li>C = classic controller from ExtJs 4</li>
                         </ul>
                         <aside class="notes">
-                            It is good classic pattern, but in real applications we have some overhead in coding logic connected to view. I mean read/write operations.
+                            It is a good classic pattern, but in real applications we have some overhead in coding logic connected to view. I mean read/write operations.
                         </aside>
                     </section>
 
@@ -486,8 +487,8 @@
                         <img class="imgnoborder" width="620" height="550" src="images/MVVM-VC.png" alt="MVVM + VC in ExtJs">
                         <aside class="notes">
                             ExtJs implemented variation of MVVM with view controller, that contains internal app logic.
-                            View Controller and Controller looks very similar, but ViewController are created for every view and
-                            traditional Controller can listen across few views.
+                            View Controller and Controller looks very similar, but ViewController are created for every
+                            view and traditional Controller can listen across few views.
                         </aside>
                     </section>
                 </section>
@@ -512,8 +513,10 @@
                         <h2>Layouts</h2>
                         </br>
                         <img class="imgnoborder" width="561" height="481" src="images/layouts-extjs5.png" alt="Layouts in ExtJs 5">
+                        </br>
+                        <a href="http://dev.sencha.com/ext/5.0.1/examples/kitchensink/#layouts" target="_blank">Sandbox</a>
                         <aside class="notes">
-                            Layouts give us easily manipulate ui elements position.
+                            Layouts give us an opportunity to manipulate ui elements position easily.
                         </aside>
                     </section>
 
@@ -521,8 +524,10 @@
                         <h2>Forms</h2>
                         </br>
                         <img class="imgnoborder" width="700" height="482" src="images/form-fields.png" alt="Form fields in ExtJs 5">
+                        </br>
+                        <a href="http://dev.sencha.com/ext/5.0.1/examples/kitchensink/#form-fields" target="_blank">Sandbox</a>
                         <aside class="notes">
-                            Also we have a lot of components for creating forms.
+                            Also we have a lot of components for creating forms
                         </aside>
                     </section>
 
@@ -530,6 +535,8 @@
                         <h2>Grids</h2>
                         </br>
                         <img class="imgnoborder" width="838" height="486" src="images/grids.png" alt="Grids in ExtJs 5">
+                        </br>
+                        <a href="http://dev.sencha.com/ext/5.0.1/examples/kitchensink/#grids" target="_blank">Sandbox</a>
                         <aside class="notes">
                             and grids
                         </aside>
@@ -539,6 +546,8 @@
                         <h2>Trees</h2>
                         </br>
                         <img class="imgnoborder" width="560" height="490" src="images/trees.png" alt="Trees in ExtJs 5">
+                        </br>
+                        <a href="http://dev.sencha.com/ext/5.0.1/examples/kitchensink/#trees" target="_blank">Sandbox</a>
                         <aside class="notes">
                             or trees.
                         </aside>
@@ -548,6 +557,8 @@
                         <h2>Charts</h2>
                         </br>
                         <img class="imgnoborder" width="562" height="475" src="images/charts.png" alt="Charts in ExtJs 5">
+                        </br>
+                        <a href="http://dev.sencha.com/ext/5.0.1/examples/kitchensink/?charts=true#all" target="_blank">Sandbox</a>
                         <aside class="notes">
                             Charts optimised for touch devices.
                         </aside>
@@ -586,7 +597,7 @@
         });
                     </code></pre>
                     <aside class="notes">
-                        The Router class is a new addition to Ext JS 5 that was built to make hash change interpretation very simple in an MVC application.
+                        The Router class is a new addition to Ext JS 5 that was built to make hash change interpretation very simple in a single page application.
                     </aside>
                 </section>
 
@@ -628,18 +639,18 @@
                     </br>
                     <h3>Sources:</h3>
                     <ul>
-                        <li><a href="http://docs.sencha.com/extjs/5.0/">docs.sencha.com/extjs/5.0</a></li>
-                        <li><a href="http://docs.sencha.com/extjs/5.0/application_architecture/application_architecture.html">Introduction to Application Architecture</a></li>
-                        <li><a href="http://www.sencha.com/blog/ext-js-5-mvc-mvvm-and-more/">Ext JS 5: MVC, MVVM and More</a></li>
-                        <li><a href="http://www.sencha.com/blog/deep-dive-into-ext-js-5-data">Deep Dive Into Ext JS 5 Data</a></li>
-                        <li><a href="http://dev.sencha.com/ext/5.0.1/examples/index.html">Examples</a></li>
+                        <li><a href="http://docs.sencha.com/extjs/5.0/" target="_blank">docs.sencha.com/extjs/5.0</a></li>
+                        <li><a href="http://docs.sencha.com/extjs/5.0/application_architecture/application_architecture.html" target="_blank">Introduction to Application Architecture</a></li>
+                        <li><a href="http://www.sencha.com/blog/ext-js-5-mvc-mvvm-and-more/" target="_blank">Ext JS 5: MVC, MVVM and More</a></li>
+                        <li><a href="http://www.sencha.com/blog/deep-dive-into-ext-js-5-data" target="_blank">Deep Dive Into Ext JS 5 Data</a></li>
+                        <li><a href="http://dev.sencha.com/ext/5.0.1/examples/index.html" target="_blank">Examples</a></li>
                     </ul>
                     </br>
                     </br>
                     <p>
-                        <small><a href="http://pencroff.com">Sergii Danilov</a> / <a href="http://twitter.com/pencroff">@pencroff</a></small>
+                        <small><a href="http://pencroff.com">Sergii Danilov</a> / <a href="http://twitter.com/pencroff" target="_blank">@pencroff</a></small>
                         </br>
-                        <small><img class="imgnoborder" style="margin: 5px 10px;" src="images/github.svg" height="24" width="24"/><a href="https://github.com/Pencroff">github.com/Pencroff</a></small>
+                        <small><img class="imgnoborder" style="margin: 5px 10px;" src="images/github.svg" height="24" width="24"/><a href="https://github.com/Pencroff" target="_blank">github.com/Pencroff</a></small>
                     </p>
                 </section>
 
